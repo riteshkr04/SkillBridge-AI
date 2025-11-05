@@ -1,0 +1,127 @@
+{
+    "folders": [
+        {
+            "name": "SkillBridge AI",
+            "path": "."
+        },
+        {
+            "name": "Backend",
+            "path": "./backend"
+        },
+        {
+            "name": "Frontend", 
+            "path": "./frontend"
+        }
+    ],
+    "settings": {
+        "python.defaultInterpreterPath": "./backend/venv/bin/python",
+        "python.terminal.activateEnvironment": true,
+        "emmet.includeLanguages": {
+            "javascript": "javascriptreact"
+        },
+        "tailwindCSS.includeLanguages": {
+            "javascript": "javascript",
+            "html": "HTML"
+        },
+        "files.exclude": {
+            "**/node_modules": true,
+            "**/venv": true,
+            "**/__pycache__": true,
+            "**/*.pyc": true
+        },
+        "search.exclude": {
+            "**/node_modules": true,
+            "**/venv": true,
+            "**/__pycache__": true
+        },
+        "terminal.integrated.cwd": "${workspaceFolder}",
+        "editor.formatOnSave": true,
+        "editor.codeActionsOnSave": {
+            "source.organizeImports": true
+        }
+    },
+    "extensions": {
+        "recommendations": [
+            "ms-python.python",
+            "ms-python.vscode-pylance",
+            "bradlc.vscode-tailwindcss",
+            "dsznajder.es7-react-js-snippets",
+            "rangav.vscode-thunder-client",
+            "ms-vscode.vscode-json",
+            "esbenp.prettier-vscode"
+        ]
+    },
+    "tasks": {
+        "version": "2.0.0",
+        "tasks": [
+            {
+                "label": "Setup Project",
+                "type": "shell",
+                "command": "./setup.sh",
+                "group": "build",
+                "presentation": {
+                    "echo": true,
+                    "reveal": "always",
+                    "focus": false,
+                    "panel": "shared"
+                },
+                "problemMatcher": []
+            },
+            {
+                "label": "Start Demo",
+                "type": "shell",
+                "command": "./start-demo.sh",
+                "group": "build",
+                "presentation": {
+                    "echo": true,
+                    "reveal": "always",
+                    "focus": false,
+                    "panel": "shared"
+                },
+                "problemMatcher": []
+            },
+            {
+                "label": "Start Backend",
+                "type": "shell",
+                "command": "cd backend && source venv/bin/activate && uvicorn main:app --reload --port 8000",
+                "group": "build",
+                "presentation": {
+                    "echo": true,
+                    "reveal": "always",
+                    "focus": false,
+                    "panel": "shared"
+                },
+                "problemMatcher": []
+            },
+            {
+                "label": "Start Frontend",
+                "type": "shell",
+                "command": "cd frontend && npm run dev",
+                "group": "build",
+                "presentation": {
+                    "echo": true,
+                    "reveal": "always",
+                    "focus": false,
+                    "panel": "shared"
+                },
+                "problemMatcher": []
+            }
+        ]
+    },
+    "launch": {
+        "version": "0.2.0",
+        "configurations": [
+            {
+                "name": "Python: FastAPI",
+                "type": "python",
+                "request": "launch",
+                "program": "${workspaceFolder}/backend/main.py",
+                "console": "integratedTerminal",
+                "cwd": "${workspaceFolder}/backend",
+                "env": {
+                    "PYTHONPATH": "${workspaceFolder}/backend"
+                }
+            }
+        ]
+    }
+}

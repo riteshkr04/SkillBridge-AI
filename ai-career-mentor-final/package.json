@@ -1,0 +1,46 @@
+{
+  "name": "ai-career-mentor",
+  "version": "1.0.0",
+  "description": "AI-powered career guidance platform with resume analysis and personalized recommendations",
+  "main": "index.js",
+  "scripts": {
+    "setup": "./setup.sh",
+    "start": "./start.sh",
+    "dev": "concurrently \"cd backend && source venv/bin/activate && uvicorn main:app --reload --port 8000\" \"cd frontend && npm run dev\"",
+    "backend": "cd backend && source venv/bin/activate && uvicorn main:app --reload --port 8000",
+    "frontend": "cd frontend && npm run dev",
+    "build": "cd frontend && npm run build",
+    "install-backend": "cd backend && python -m venv venv && source venv/bin/activate && pip install -r requirements.txt",
+    "install-frontend": "cd frontend && npm install",
+    "install": "npm run install-backend && npm run install-frontend"
+  },
+  "keywords": [
+    "ai",
+    "career",
+    "mentor",
+    "resume",
+    "analysis",
+    "recommendations",
+    "react",
+    "fastapi",
+    "tailwindcss"
+  ],
+  "author": "Your Development Team",
+  "license": "MIT",
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  },
+  "engines": {
+    "node": ">=16.0.0",
+    "python": ">=3.8.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-team/ai-career-mentor.git"
+  },
+  "bugs": {
+    "url": "https://github.com/your-team/ai-career-mentor/issues"
+  },
+  "homepage": "https://github.com/your-team/ai-career-mentor#readme"
+}
+
