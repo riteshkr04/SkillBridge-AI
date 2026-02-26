@@ -40,7 +40,7 @@ class ProgressRequest(BaseModel):
     completed: bool
 
 @app.post('/upload-resume')
-async def upload_resume(file: UploadFile = File(...), user: dict = Depends(get_current_user)):
+async def upload_resume(file: UploadFile = File(...)):
     contents = await file.read()
     text = extract_text_from_file(file.filename, contents)
     skills = nlp_detect_skills(text)
@@ -49,12 +49,12 @@ async def upload_resume(file: UploadFile = File(...), user: dict = Depends(get_c
     return {'filename': file.filename, 'text': text, 'skills': skills}
 
 @app.post('/recommend-careers')
-async def recommend(sk: SkillsIn, user: dict = Depends(get_current_user)):
+async def recommend(sk: SkillsIn):
     careers = recommend_careers(sk.skills)
     return careers
 
 @app.post('/career-gap')
-async def career_gap(g: GapIn, user: dict = Depends(get_current_user)):
+async def career_gap(g: GapIn):
     gap = career_gap_and_plan(g.target_career, g.current_skills)
     return gap
 
@@ -66,11 +66,11 @@ async def register(u: UserCreate):
     return {'access_token': token, 'token_type': 'bearer'}
 
 @app.get('/whoami')
-async def whoami(user: dict = Depends(get_current_user)):
-    return {'email': user['email']}
+async def whoami():
+    return {'email': "guest"}
 
 @app.post('/update-progress')
-async def update_progress(progress: ProgressRequest, user: dict = Depends(get_current_user)):
+async def update_progress(progress):
     # Update user's learning progress
     user_email = user['email']
     # For demo purposes, we'll store progress in memory
@@ -83,7 +83,7 @@ async def update_progress(progress: ProgressRequest, user: dict = Depends(get_cu
     }
 
 @app.get('/get-progress/{skill}')
-async def get_progress(skill: str, user: dict = Depends(get_current_user)):
+async def get_progress(skill: str):
     # Get user's progress for a specific skill
     # For demo purposes, return empty progress
     # In production, this would fetch from database
