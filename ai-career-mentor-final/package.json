@@ -4,15 +4,9 @@
   "description": "AI-powered career guidance platform with resume analysis and personalized recommendations",
   "main": "index.js",
   "scripts": {
-    "setup": "./setup.sh",
-    "start": "./start.sh",
-    "dev": "concurrently \"cd backend && source venv/bin/activate && uvicorn main:app --reload --port 8000\" \"cd frontend && npm run dev\"",
-    "backend": "cd backend && source venv/bin/activate && uvicorn main:app --reload --port 8000",
-    "frontend": "cd frontend && npm run dev",
+    "dev": "cd frontend && npm run dev",
     "build": "cd frontend && npm run build",
-    "install-backend": "cd backend && python -m venv venv && source venv/bin/activate && pip install -r requirements.txt",
-    "install-frontend": "cd frontend && npm install",
-    "install": "npm run install-backend && npm run install-frontend"
+    "preview": "cd frontend && npm run preview"
   },
   "keywords": [
     "ai",
@@ -27,9 +21,7 @@
   ],
   "author": "Your Development Team",
   "license": "MIT",
-  "devDependencies": {
-    "concurrently": "^8.2.2"
-  },
+  "devDependencies": {},
   "engines": {
     "node": ">=16.0.0",
     "python": ">=3.8.0"

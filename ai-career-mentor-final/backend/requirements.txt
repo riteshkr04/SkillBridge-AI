@@ -10,3 +10,4 @@ passlib[bcrypt]
 openai
 spacy
 sentence-transformers
+gunicorn
